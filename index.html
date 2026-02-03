@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>This Is Not Valentine’s Week</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Indie Flower', cursive;
+      background: linear-gradient(to bottom, #fff5e6, #ffccf2);
+      overflow-x: hidden;
+      color: #4a4a4a;
+    }
+
+    /* Floating background */
+    .background-animations span {
+      position: fixed;
+      bottom: -50px;
+      font-size: 22px;
+      animation: floatUp 14s linear infinite;
+      opacity: 0.35;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 0; }
+      to { transform: translateY(-120vh); opacity: 1; }
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 1.8s ease, box-shadow 1.8s ease, transform 1.8s ease;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(6px);
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+      transform: scale(0.98);
+    }
+
+    section.visible {
+      opacity: 1;
+      box-shadow: 0 0 35px rgba(255,182,193,0.35);
+      transform: scale(1);
+    }
+
+    section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(255,182,193,0.25), transparent 60%);
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      color: #ff6f91;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      color: #ff9f9f;
+    }
+
+    p {
+      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      color: #7a6f6f;
+      margin: 6px 0;
+    }
+
+    small {
+      font-size: 1rem;
+      opacity: 0.7;
+    }
+
+    .scroll-indicator {
+      margin-top: 20px;
+      animation: bounce 2s infinite;
+      font-size: 1.5rem;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    img.photo {
+      max-width: 90%;
+      width: 260px;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    .cartoon {
+      width: 70px;
+      position: absolute;
+      animation: float 4s ease-in-out infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .floating-emoji {
+      position: absolute;
+      font-size: 28px;
+      animation: drift 6s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes drift {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+
+    footer {
+      padding: 60px 20px;
+      text-align: center;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      transition: opacity 2s ease;
+      position: relative;
+    }
+
+    footer.visible { opacity: 1; }
+
+    /* Audio button */
+    #audio-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff6f91;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    #audio-btn.hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Floating background -->
+<div class="background-animations">
+  <span style="left:10%">💖</span>
+  <span style="left:25%">✨</span>
+  <span style="left:40%">🌸</span>
+  <span style="left:55%">💫</span>
+  <span style="left:70%">🧸</span>
+  <span style="left:85%">💘</span>
+</div>
+
+<!-- Audio -->
+<audio id="bg-music" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<button id="audio-btn">Tap gently 🎶</button>
+
+<!-- HERO -->
+<section class="visible">
+  <div>
+    <span class="floating-emoji" style="top:10%; left:15%;">💖</span>
+    <span class="floating-emoji" style="top:70%; right:20%;">✨</span>
+    <p>Dear my love, Jay 💖</p>
+    <h1>This is for you.</h1>
+    <div class="scroll-indicator">↓</div>
+  </div>
+</section>
+
+<section>
+  <div>
+    <span class="floating-emoji" style="top:15%; right:10%;">🎁</span>
+    <p>This is preparation. 🎁</p>
+    <p>For little surprises. 🎈</p>
+    <p>For quiet moments. 🌙</p>
+  </div>
+  <img src="cartoon1.png" class="cartoon" style="top:20px; right:20px;">
+</section>
+
+<section>
+  <div>
+    <span class="floating-emoji" style="bottom:20%; left:10%;">🍫</span>
+    <p>Before chocolates. 🍫</p>
+    <p>Before roses. 🌹</p>
+    <p>Before promises. 🤝</p>
+    <p>I just wanted to tell you something. 💌</p>
+  </div>
+</section>
+
+<section>
+  <div>
+    <span class="floating-emoji" style="top:20%; left:80%;">⚠️</span>
+    <h2>⚠️ Gentle Warning</h2>
+    <p>Unexpected affection ahead. 💘</p>
+    <p>Side effects: smiling. 😊</p>
+  </div>
+</section>
+
+<section>
+  <div>
+    <span class="floating-emoji" style="top:10%; right:15%;">🧸</span>
+    <p>Warm 🔥</p>
+    <p>Cozy 🧸</p>
+    <p>Soft 🍦</p>
+    <p>Slow 🐌</p>
+    <p>Honest 🤍</p>
+    <p>Dress your heart accordingly. 💖</p>
+  </div>
+</section>
+
+<section>
+  <div>
+    <span class="floating-emoji" style="top:15%; left:10%;">🌸</span>
+    <p>You don’t have to plan. 🗓️</p>
+    <p>You don’t have to buy. 💳</p>
+    <p>Just be here. 🌸</p>
+    <p>I’ve got this. 💪</p>
+    <img src="photo1.jpg" class="photo">
+  </div>
+</section>
+
+<section>
+  <div>
+    <p>7 — Warm 🔥</p>
+    <p>6 — Calm 🌿</p>
+    <p>5 — Sweet 🍬</p>
+    <p>4 — Honest 🤍</p>
+    <p>3 — Close 🤗</p>
+    <p>2 — Safe 🛡️</p>
+    <p>1 — Us 💑</p>
+  </div>
+</section>
+
+<section>
+  <div>
+    <span class="floating-emoji" style="top:10%; right:15%;">🎬</span>
+    <h1>Coming Soon… 🎬</h1>
+    <p>A week of small moments.</p>
+    <p>Just intention. 💖</p>
+    <img src="photo2.jpg" class="photo">
+  </div>
+</section>
+
+<section>
+  <div>
+    <p>Before the world talks about love…</p>
+    <p>I wanted you to know first. 💌</p>
+    <p>Just for you. 💖</p>
+  </div>
+</section>
+
+<section>
+  <div>
+    <h1>Tomorrow. 🌅</h1>
+    <small>7th February</small>
+  </div>
+</section>
+
+<footer>
+  <span class="floating-emoji" style="top:10%; left:20%;">🌍</span>
+  <span class="floating-emoji" style="top:60%; right:15%;">✨</span>
+
+  <p>This week isn’t about grand gestures.</p>
+  <p>It’s about intention. 💖</p>
+
+  <br>
+
+  <h2>🌍 My Truth</h2>
+  <p>I won’t say that you mean a lot to me…</p>
+  <p>Because you don’t mean a lot.</p>
+  <p style="font-size:1.6rem; color:#ff6f91;">
+    You mean <strong>everything</strong> to me. 💖
+  </p>
+  <p style="font-size:1.4rem;">
+    You are my world. 🌍✨
+  </p>
+
+  <br>
+
+  <p>I love you so much, mera bachha.</p>
+  <p>You are my everything. 🌟</p>
+
+  <br>
+
+  <p><em>From yours,<br>Debolina 💕</em></p>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll("section, footer");
+  const audio = document.getElementById("bg-music");
+  const btn = document.getElementById("audio-btn");
+
+  btn.addEventListener("click", () => {
+    audio.play();
+    btn.classList.add("hidden");
+  });
+
+  const reveal = () => {
+    sections.forEach(sec => {
+      if (sec.getBoundingClientRect().top < window.innerHeight * 0.8) {
+        sec.classList.add("visible");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", reveal);
+  reveal();
+</script>
+
+</body>
+</html>
